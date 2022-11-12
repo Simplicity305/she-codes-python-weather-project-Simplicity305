@@ -35,7 +35,7 @@ class LoadCSVTests(unittest.TestCase):
             ["2020-06-26T07:00:00+08:00", 53, 66]
         ]
 
-    def test_load_csv_file(self):
+    def test_load_csv_file(self): #all data included in the one function - if error at any point, it will stop at the first error.
         result = weather.load_data_from_csv("tests/data/example_one.csv")
         self.assertListEqual(result, self.example_one)
 

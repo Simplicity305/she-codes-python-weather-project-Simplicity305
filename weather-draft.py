@@ -5,6 +5,7 @@ DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 
 def format_temperature(temp):
+    
     """Takes a temperature and returns it in string format with the degrees
         and celcius symbols.
 
@@ -17,6 +18,7 @@ def format_temperature(temp):
 
 
 def convert_date(iso_string):
+
     """Converts and ISO formatted date into a human readable format.
 
     Args:
@@ -28,6 +30,10 @@ def convert_date(iso_string):
 
 
 def convert_f_to_c(temp_in_farenheit):
+    celcius = (temp_in_farenheit - 32) * (5 / 9)
+    return celcius 
+    
+
     """Converts an temperature from farenheit to celcius.
 
     Args:
@@ -39,6 +45,7 @@ def convert_f_to_c(temp_in_farenheit):
 
 
 def calculate_mean(weather_data):
+
     """Calculates the mean value from a list of numbers.
 
     Args:
@@ -53,17 +60,10 @@ def load_data_from_csv(csv_file):
     data = []
 
     with open(csv_file, encoding="utf-8") as csv_file:
-        next(csv_file)
         reader = csv.reader(csv_file)
         for line in reader:
-            if len(line) == 3:
-                date = line[0]
-                min = int(line[1])
-                max = int(line[2])
-                data.append([date, min, max]) 
+            data.append(line)
     return data
-
-    # How would you handle this if the data is not always 3 columns? eg future proofing 
 
     """Reads a csv file and stores the data in a list.
 
@@ -74,8 +74,8 @@ def load_data_from_csv(csv_file):
     """
     pass
 
-
 def find_min(weather_data):
+
     """Calculates the minimum value in a list of numbers.
 
     Args:
@@ -109,6 +109,7 @@ def generate_summary(weather_data):
 
 
 def generate_daily_summary(weather_data):
+
     """Outputs a daily summary for the given weather data.
 
     Args:
@@ -116,4 +117,5 @@ def generate_daily_summary(weather_data):
     Returns:
         A string containing the summary information.
     """
+    
     pass
