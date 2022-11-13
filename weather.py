@@ -3,7 +3,7 @@ from datetime import datetime
 
 DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
-
+# -------------DONE----------------
 def format_temperature(temp):
     """Takes a temperature and returns it in string format with the degrees
         and celcius symbols.
@@ -40,8 +40,15 @@ def convert_f_to_c(temp_in_farenheit):
     """
     pass
 
-
+# -----------DONE---------------
 def calculate_mean(weather_data):
+    total = 0
+    for temp in weather_data:
+        total += float(temp)
+    mean = total / len(weather_data)
+    return mean
+
+
     """Calculates the mean value from a list of numbers.
 
     Args:
