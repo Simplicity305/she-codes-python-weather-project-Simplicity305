@@ -4,21 +4,19 @@ from datetime import datetime
 DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 
-def format_temperature(temp):
-    
-    """Takes a temperature and returns it in string format with the degrees
-        and celcius symbols.
+# def format_temperature(temp):
+#     """Takes a temperature and returns it in string format with the degrees
+#         and celcius symbols.
 
-    Args:
-        temp: A string representing a temperature.
-    Returns:
-        A string contain the temperature and "degrees celcius."
-    """
-    return f"{temp}{DEGREE_SYBMOL}"
+#     Args:
+#         temp: A string representing a temperature.
+#     Returns:
+#         A string contain the temperature and "degrees celcius."
+#     """
+#     return f"{temp}{DEGREE_SYBMOL}"
 
 
 def convert_date(iso_string):
-
     """Converts and ISO formatted date into a human readable format.
 
     Args:
@@ -30,9 +28,9 @@ def convert_date(iso_string):
 
 
 def convert_f_to_c(temp_in_farenheit):
-    celcius = (temp_in_farenheit - 32) * (5 / 9)
-    return celcius 
-    
+    celsius = (float(temp_in_farenheit) - 32) * (5 / 9)
+    return round(celsius, 1) 
+
 
     """Converts an temperature from farenheit to celcius.
 
@@ -45,7 +43,6 @@ def convert_f_to_c(temp_in_farenheit):
 
 
 def calculate_mean(weather_data):
-
     """Calculates the mean value from a list of numbers.
 
     Args:
@@ -56,26 +53,34 @@ def calculate_mean(weather_data):
     pass
 
 
-def load_data_from_csv(csv_file):
-    data = []
+# def load_data_from_csv(csv_file):
+#     data = []
 
-    with open(csv_file, encoding="utf-8") as csv_file:
-        reader = csv.reader(csv_file)
-        for line in reader:
-            data.append(line)
-    return data
+#     with open(csv_file, encoding="utf-8") as csv_file:
+#         next(csv_file)
+#         reader = csv.reader(csv_file)
+#         for line in reader:
+#             if len(line) == 3:
+#                 date = line[0]
+#                 min = int(line[1])
+#                 max = int(line[2])
+#                 data.append([date, min, max]) 
+#     return data
 
-    """Reads a csv file and stores the data in a list.
+#     # How would you handle this if the data is not always 3 columns? eg future proofing - also try to reformat so the variable is (date, min, max) and try to play around with where you'd specify the int
+# 
 
-    Args:
-        csv_file: a string representing the file path to a csv file.
-    Returns:
-        A list of lists, where each sublist is a (non-empty) line in the csv file.
-    """
-    pass
+#     """Reads a csv file and stores the data in a list.
+
+#     Args:
+#         csv_file: a string representing the file path to a csv file.
+#     Returns:
+#         A list of lists, where each sublist is a (non-empty) line in the csv file.
+#     """
+#     pass
+
 
 def find_min(weather_data):
-
     """Calculates the minimum value in a list of numbers.
 
     Args:
@@ -109,7 +114,6 @@ def generate_summary(weather_data):
 
 
 def generate_daily_summary(weather_data):
-
     """Outputs a daily summary for the given weather data.
 
     Args:
@@ -117,5 +121,4 @@ def generate_daily_summary(weather_data):
     Returns:
         A string containing the summary information.
     """
-    
     pass

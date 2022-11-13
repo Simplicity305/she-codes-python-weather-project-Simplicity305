@@ -26,8 +26,11 @@ def convert_date(iso_string):
     """
     pass
 
-
+# ---------------DONE---------------
 def convert_f_to_c(temp_in_farenheit):
+    celsius = (float(temp_in_farenheit) - 32) * (5 / 9)
+    return round(celsius, 1) 
+    
     """Converts an temperature from farenheit to celcius.
 
     Args:
@@ -49,6 +52,7 @@ def calculate_mean(weather_data):
     pass
 
 
+# ----------------DONE-----------------
 def load_data_from_csv(csv_file):
     data = []
 
@@ -62,8 +66,6 @@ def load_data_from_csv(csv_file):
                 max = int(line[2])
                 data.append([date, min, max]) 
     return data
-
-    # How would you handle this if the data is not always 3 columns? eg future proofing 
 
     """Reads a csv file and stores the data in a list.
 
