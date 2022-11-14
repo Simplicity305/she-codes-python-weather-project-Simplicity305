@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
 
+
 DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 # -------------DONE----------------
@@ -15,8 +16,13 @@ def format_temperature(temp):
     """
     return f"{temp}{DEGREE_SYBMOL}"
 
-
+# -------------DONE----------------
 def convert_date(iso_string):
+    date = datetime.fromisoformat(iso_string)
+    formatted_date = date.strftime ("%A %d %B %Y")
+    return formatted_date
+
+
     """Converts and ISO formatted date into a human readable format.
 
     Args:
@@ -84,6 +90,8 @@ def load_data_from_csv(csv_file):
     pass
 
 
+
+# ----------------DONE-----------------
 def find_min(weather_data):
     if len(weather_data) == 0:
         return ()
@@ -114,6 +122,8 @@ def find_min(weather_data):
     pass
 
 
+
+# ----------------DONE-----------------
 def find_max(weather_data):
     if len(weather_data) == 0:
         return ()
