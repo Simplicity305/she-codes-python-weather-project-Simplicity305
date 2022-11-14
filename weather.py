@@ -85,6 +85,25 @@ def load_data_from_csv(csv_file):
 
 
 def find_min(weather_data):
+    if len(weather_data) == 0:
+        return ()
+
+    min_index = 0
+    minimum = float(weather_data[0])
+
+    enumerated_weather_data = enumerate(weather_data)
+
+    for data in enumerated_weather_data:
+        index, temp = data
+        temp = float(temp)
+
+        if temp <= minimum:
+            minimum = temp
+            min_index = index
+
+    return (minimum, min_index)
+
+
     """Calculates the minimum value in a list of numbers.
 
     Args:
@@ -96,6 +115,24 @@ def find_min(weather_data):
 
 
 def find_max(weather_data):
+    if len(weather_data) == 0:
+        return ()
+
+    max_index = 0
+    maximum = float(weather_data[0])
+
+    enumerated_weather_data = enumerate(weather_data)
+
+    for data in enumerated_weather_data:
+        index, temp = data
+        temp = float(temp)
+        
+        if temp >= maximum:
+            maximum = temp
+            max_index = index
+
+    return (maximum, max_index)
+
     """Calculates the maximum value in a list of numbers.
 
     Args:
