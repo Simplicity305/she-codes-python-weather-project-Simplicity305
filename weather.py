@@ -55,6 +55,7 @@ def calculate_mean(weather_data):
     return mean
 
 
+
     """Calculates the mean value from a list of numbers.
 
     Args:
@@ -97,9 +98,18 @@ def find_min(weather_data):
         return ()
 
     min_index = 0
-    minimum = float(weather_data[0])
+    minimum = float(weather_data[0]) 
 
     enumerated_weather_data = enumerate(weather_data)
+
+# (0, 49) - 1st loop - 
+# (1, 57) - 2nd - 
+# (2, 56) - 
+# (3, 55)
+# (4, 10) - 
+
+    min_index = 4
+    minimum_temp = 10
 
     for data in enumerated_weather_data:
         index, temp = data
@@ -109,8 +119,7 @@ def find_min(weather_data):
             minimum = temp
             min_index = index
 
-    return (minimum, min_index)
-
+    return (minimum, min_index) 
 
     """Calculates the minimum value in a list of numbers.
 
@@ -122,8 +131,7 @@ def find_min(weather_data):
     pass
 
 
-
-# ----------------DONE-----------------
+# ----------------DONE---------------
 def find_max(weather_data):
     if len(weather_data) == 0:
         return ()
@@ -154,6 +162,43 @@ def find_max(weather_data):
 
 
 def generate_summary(weather_data):
+    # number of days 
+    num_days = len(weather_data)
+
+    # min average
+    min_list = []
+    for line in weather_data:
+        min_list.append(line[1])
+    mean_min = calculate_mean(min_list)
+    formatted_mean_min = format_temperature(convert_f_to_c(mean_min))
+    
+    # min temp
+    min_temp, min_index = find_min(min_list) 
+    formatted_min = format_temperature(convert_f_to_c(min_temp))
+    min_date = weather_data[min_index][0]
+    formatted_min_date = convert_date(min_date)
+
+    #max average
+    max_list = [line[2] for line in weather_data]
+    mean_max = calculate_mean(max_list)
+    formatted_mean_max = format_temperature(convert_f_to_c(mean_max))
+
+    # max_temp
+    max_temp, max_index = find_max(max_list)
+    formatted_max = format_temperature(convert_f_to_c(max_temp))
+    max_date = weather_data[max_index][0]
+    formatted_max_date = convert_date(max_date)
+
+    # # min average
+    # min_list = []
+    # for line in weather_data:
+    #     min_list.append(line[1])
+    # mean_min = calculate_mean(min_list)
+    # formatted_mean_min = format_temperature(mean_min)
+
+    return (f"{num_days} Day Overview\n  The lowest temperature will be {formatted_min}, and will occur on {formatted_min_date}.\n  The highest temperature will be {formatted_max}, and will occur on {formatted_max_date}.\n  The average low this week is {formatted_mean_min}.\n  The average high this week is {formatted_mean_max}.\n")
+
+
     """Outputs a summary for the given weather data.
 
     Args:
@@ -165,6 +210,42 @@ def generate_summary(weather_data):
 
 
 def generate_daily_summary(weather_data):
+
+    daily_summary = ""
+
+    for daily_data in weather_data:
+        date = convert_date(daily_data[0])
+        min_temp = format_temperature(convert_f_to_c(daily_data[1]))
+        max_temp = format_temperature(convert_f_to_c(daily_data[2]))
+        
+        daily_summary += f"---- {date} ----\n  Minimum Temperature: {min_temp}\n  Maximum Temperature: {max_temp}\n\n"
+
+    # print(daily_summary)
+
+    return daily_summary
+    
+
+# ---- Friday 02 July 2021 ----
+#   Minimum Temperature: 9.4°C
+#   Maximum Temperature: 19.4°C
+
+# ---- Saturday 03 July 2021 ----
+#   Minimum Temperature: 13.9°C
+#   Maximum Temperature: 20.0°C
+
+# ---- Sunday 04 July 2021 ----
+#   Minimum Temperature: 13.3°C
+#   Maximum Temperature: 16.7°C
+
+# ---- Monday 05 July 2021 ----
+#   Minimum Temperature: 12.8°C
+#   Maximum Temperature: 16.1°C
+
+# ---- Tuesday 06 July 2021 ----
+#   Minimum Temperature: 11.7°C
+#   Maximum Temperature: 16.7°C
+    
+
     """Outputs a daily summary for the given weather data.
 
     Args:
@@ -173,3 +254,4 @@ def generate_daily_summary(weather_data):
         A string containing the summary information.
     """
     pass
+
